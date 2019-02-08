@@ -3,6 +3,11 @@
   <head>
     <script type="application/javascript" src="dist/main.js"></script>
     <title>audio visualiser</title>
+    <style type="text/css">
+      canvas {
+        border: 1px solid black;
+      }
+    </style>
   </head>
 
 <body>
@@ -14,6 +19,7 @@
   </button>
 
   <canvas id="mycanvas"></canvas>
+  <input type="range" id="volume" min="0" max="2" value="1" step="0.01">
   <!-- <canvas id="oscilloscope"></canvas> -->
 </body>
 

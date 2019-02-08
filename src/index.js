@@ -1,3 +1,4 @@
+const AudioOutput = require("./audio");
 
 redraw = (arr1) => {
   // var x = charX;
@@ -13,34 +14,11 @@ redraw = (arr1) => {
   if (!arr1) {
     return null;
   }
-  for (let i = 0; i < arr1.length; i++) {
-    // ctx.fillStyle = '#ccddff';
-    // ctx.beginPath();
-    // ctx.moveTo(5, 200);
-    // ctx.lineTo(5, arr1[i]);
-    // ctx.closePath();
-    // ctx.fill();
-    // ctx.strokeStyle = 'rgb(0,128,0)';
-    // ctx.lineWidth = 5;
-    // ctx.stroke();  
-
-    if ((i % 5) === 0) {
-      red = red + (i % 255);
+  for (let x = 0; x < arr1.length; x++) {
+    for (var i = 0; i < arr1[x]; i++) {
+      ctx.fillRect(x * 2, (canvasEl.height - arr1[x]), 1, arr1[x]);
     }
-
-    if ((i % 2) === 0) {
-      blue = blue + (i % 255);;
-    }
-
-    if ((i % 3) === 0) {
-      green = green + (i % 255);;
-    }
-
-    ctx.fillStyle = `rgb(${(255 - (i % 255))}, 10, ${i})`;
-
-    ctx.fillRect(i + (i % 10), 0, 10, ((arr1[i] / 128.0) * canvasEl.height / 4));
-
-    // ctx.fillRect(i, -100, 10, arr1[i]);
+  }
 
 
   }
@@ -55,73 +33,57 @@ redraw = (arr1) => {
   // ctx.strokeStyle = 'rgb(0,128,0)';
   // ctx.lineWidth = 5;
   // ctx.stroke();
-}
+
 
 renderFrame = () => {
-  animationFrame = requestAnimationFrame(renderFrame);
-  analyser.getByteFrequencyData(frequencyData);
-  let dataOutput = [];
-  for (let i = 0; i < frequencyData.length; i++) {
-    if ((frequencyData[i] > 0) && (i % 40 === 0)) {
-      dataOutput.push(frequencyData[i]);
-      redraw(frequencyData[i]);
-    }
-  }
-  console.log(dataOutput);
+  if (playState === false) {
+    cancelAnimationFrame(animationFrame);
+  } else {
+    animationFrame = requestAnimationFrame(renderFrame);
+    audio.analyser.getByteFrequencyData(frequencyData);
+  // let dataOutput = [];
+  // for (let i = 0; i < frequencyData.length; i++) {
+  //   if ((frequencyData[i] > 0) && (i % 40 === 0)) {
+  //     dataOutput.push(frequencyData[i]);
+  //     redraw(frequencyData[i]);
+  //   }
+  // }
 
-  // redraw(frequencyData);
+    redraw(frequencyData);
+  }
 }
 
-let animationFrame;
-let analyzer;
 let canvasEl;
 let ctx;
-const audioContext = new AudioContext();
-var audioElement = new Audio();
-audioElement.src = 'https://api.soundcloud.com/tracks/42328219/stream?client_id=b1495e39071bd7081a74093816f77ddb';
-audioElement.controls = true;
-audioElement.loop = true;
-audioElement.autoplay = true;
-audioElement.crossOrigin = "anonymous";
-audioSrc = audioContext.createMediaElementSource(audioElement);
-analyser = audioContext.createAnalyser();
-analyser.fftSize = 2048;
-audioSrc.connect(analyser);
-audioSrc.connect(audioContext.destination);
-var frequencyData = new Uint8Array(analyser.frequencyBinCount);
+const audio = new AudioOutput;
+const frequencyData = new Uint8Array(audio.analyser.frequencyBinCount);
+let animationFrame;
+let playState = false;
+let colorSlider = 0;
+
 let charX = 0;
 let charY = 0;
 
 document.addEventListener("DOMContentLoaded", () => {
   const playButton = document.querySelector('button');
-  playButton.addEventListener('click', function () {
-    if (audioContext.state === 'suspended') {
-      audioContext.resume();
-    }
-    if (this.dataset.playing === 'false') {
-      audioElement.play();
-      this.dataset.playing = 'true';
-      renderFrame();
-    } else if (this.dataset.playing === 'true') {
-      audioElement.pause();
-      cancelAnimationFrame(animationFrame);
-      this.dataset.playing = 'false';
-    }
-
-  }, false);
-
-  audioElement.addEventListener('ended', () => {
-    playButton.dataset.playing = 'false';
-    // animationFrame.closeAnimationFrame();
-  }, false);
-
+  playButton.addEventListener('click', () => {
+    playState = audio.togglePlay(playState);
+    renderFrame();
+  });
   canvasEl = document.getElementById("mycanvas");
-  canvasEl.width = 500;
-  canvasEl.height = 500;
+  canvasEl.width = 1000;
+  canvasEl.height = 400;
   ctx = canvasEl.getContext("2d");
+
+  let volumeControl = document.querySelector('#volume');
+
+  volumeControl.addEventListener('input', function () {
+    colorSlider = parseFloat(this.value * 100);
+    ctx.fillStyle = `rgb(${colorSlider}, 0, 0)`;
+  }, false);
 
   // ctx.fillStyle = "red";
   //x, y, width, height
   // ctx.fillRect(20, 41, 40, 50);
-  redraw();
+  // redraw();
 });
