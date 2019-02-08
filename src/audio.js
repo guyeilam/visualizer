@@ -32,7 +32,7 @@ class AudioOutput {
   }
 
   // draw(ctx) {
-  //   ctx.fillStyle = 'rgb(100,0,0)';
+    
 
   // }
 
