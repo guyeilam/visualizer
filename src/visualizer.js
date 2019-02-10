@@ -12,6 +12,7 @@ class Visualizer {
     this.bHeightFactor = 1;
     this.r = 150;
     this.numBars = 300;
+    this.time = new Date()
   }
 
   drawCircle(ctx, arr, x) {
@@ -29,7 +30,8 @@ class Visualizer {
   }
 
   drawLine(ctx, x1, y1, x2, y2, width, arr, i) {
-    ctx.strokeStyle = `rgba(${arr[i]}, ${arr[i]}, ${this.blue}, 1)`;
+    ctx.strokeStyle = `rgba(${Math.floor(255 - i)}, 0, ${this.blue}, 1)`;
+    // ctx.strokeStyle = 'rgb(0, ' + Math.floor(255 - i) + ', ' + this.blue + ')';
     ctx.lineWidth = this.lineWidth;
     ctx.beginPath();
     // ctx.moveTo(x1, y1);
@@ -66,6 +68,10 @@ class Visualizer {
     ctx.stroke();
 
     let numBars = this.numBars;
+    
+    
+    // ctx.rotate(((2 * Math.PI) / 60) * this.time.getSeconds() + ((2 * Math.PI) / 60000) * this.time.getMilliseconds());
+    // ctx.translate(105, 0);
 
     for (let i = 0; i < numBars; i++) {
       // ctx.fillStyle = this.color;
@@ -80,6 +86,7 @@ class Visualizer {
       let y_end = center_y + Math.sin(radians * i) * (r + bHeight);
 
       this.drawLine(ctx, x, y, x_end, y_end, bWidth, arr, i);
+      
 
       // ctx.fillRect(this.DIM_X - x, this.DIM_Y - arr[x], 10, ((arr[x] / 128.0) * this.DIM_Y / 4));
 

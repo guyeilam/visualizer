@@ -7,3 +7,14 @@ canvas {
   flex-direction: column;
   width: 1000px;
 }
+
+.play-button {
+  width: 200px;
+  border-radius: 5px;
+  background-color: black;
+  color: white;
+  height: 25px;
+  font-size: 14px;
+  text-transform: uppercase;
+  margin: auto;
+}
