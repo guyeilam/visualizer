@@ -1,0 +1,9 @@
+canvas {
+  border: 1px solid black;
+}
+
+.modifier-inputs {
+  display: flex;
+  flex-direction: column;
+  width: 1000px;
+}
