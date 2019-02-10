@@ -5,12 +5,13 @@ class Visualizer {
     this.BG_COLOR = "#000000";
     this.color = 'rgb(100,100,100)';
     this.blue = 100;
-    // this.widthValue = 1;
+    this.widthValue = 1;
     this.lineWidth = 1;
     this.radius = 1;
     this.startX = 1;
     this.bHeightFactor = 1;
     this.r = 150;
+    this.numBars = 300;
   }
 
   drawCircle(ctx, arr, x) {
@@ -20,19 +21,19 @@ class Visualizer {
     let startY = 12.5;
     let transposeY = .5;
     ctx.strokeStyle = this.color;
+    ctx.lineWidth = this.widthValue;
     ctx.beginPath();
     // ctx.arc(startX + (transposeX * arr[x]), startY + (transposeY * arr[x]), radius, 0, Math.PI * 2, true);
     ctx.arc(this.DIM_X / 2, this.DIM_Y / 2, radius, 0, 2 * Math.PI);
     ctx.stroke();
   }
 
-  drawLine(ctx, x1, y1, x2, y2, width, freq) {
-
-    let lineColor = "rgb(" + freq + ", " + freq + ", " + this.blue + ")";
-
-    ctx.strokeStyle = lineColor;
+  drawLine(ctx, x1, y1, x2, y2, width, arr, i) {
+    ctx.strokeStyle = `rgba(${arr[i]}, ${arr[i]}, ${this.blue}, 1)`;
     ctx.lineWidth = this.lineWidth;
     ctx.beginPath();
+    // ctx.moveTo(x1, y1);
+    // ctx.lineTo(x2, y2);
     ctx.moveTo(x1, y1);
     ctx.lineTo(x2, y2);
     ctx.stroke();
@@ -64,12 +65,12 @@ class Visualizer {
     ctx.arc(center_x, center_y, 150, 0, 2 * Math.PI);
     ctx.stroke();
 
-    let barCount = 200;
+    let numBars = this.numBars;
 
-    for (let i = 0; i < barCount; i++) {
+    for (let i = 0; i < numBars; i++) {
       // ctx.fillStyle = this.color;
 
-      let radians = Math.PI * 2 / barCount;
+      let radians = Math.PI * 2 / numBars;
       let bHeight = arr[i] * this.bHeightFactor;
       let bWidth = this.lineWidth;
 
@@ -78,9 +79,7 @@ class Visualizer {
       let x_end = center_x + Math.cos(radians * i) * (r + bHeight);
       let y_end = center_y + Math.sin(radians * i) * (r + bHeight);
 
-      this.drawLine(ctx, x, y, x_end, y_end, bWidth, arr[i]);
-
-      
+      this.drawLine(ctx, x, y, x_end, y_end, bWidth, arr, i);
 
       // ctx.fillRect(this.DIM_X - x, this.DIM_Y - arr[x], 10, ((arr[x] / 128.0) * this.DIM_Y / 4));
 
@@ -106,6 +105,10 @@ class Visualizer {
 
   changeHeight(newHeight) {
     this.bHeightFactor = newHeight;
+  }
+
+  changeBarCount(newBarCount) {
+    this.numBars = newBarCount;
   }
 
 }

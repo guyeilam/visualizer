@@ -36,6 +36,7 @@ document.addEventListener("DOMContentLoaded", () => {
   let blueSlider = document.getElementById('blueSlider');
   let widthSlider = document.getElementById('widthSlider');
   let heightSlider = document.getElementById('heightSlider');
+  let barCountInput = document.getElementById('barCountInput');
 
   redRGBSlider.addEventListener('input', function () {
     visualizer.changeColor(`rgb(${this.value}, ${greenRGBSlider.value}, ${blueRGBSlider.value})`);
@@ -59,6 +60,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
   heightSlider.addEventListener('input', function () {
     visualizer.changeHeight(this.value);
+  }, false);
+
+  barCountInput.addEventListener('input', function () {
+    visualizer.changeBarCount(this.value);
   }, false);
 
 });
