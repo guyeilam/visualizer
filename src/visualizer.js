@@ -1,3 +1,6 @@
+const VisualizerText = require("./visualizer_text");
+const SmallVisualizer = require("./small_visualizer");
+
 class Visualizer {
   constructor(width, height) {
     this.DIM_X = width;
@@ -13,7 +16,12 @@ class Visualizer {
     this.r = 150;
     this.numBars = 300;
     this.time = new Date()
+    this.textObjects = [];
+    this.add(new VisualizerText(50, 50));
+    this.smallVisualizer = new SmallVisualizer(this.DIM_X - 300, 100);
   }
+
+  
 
   drawCircle(ctx, arr, x) {
     let radius = arr[x];
@@ -41,13 +49,17 @@ class Visualizer {
     ctx.stroke();
   }
 
-  draw(ctx, arr) {
+  drawOld(ctx, arr) {
     let x = 0;
     let sliceWidth = this.DIM_X * 1.0 / arr.length;
     
-    ctx.clearRect(0, 0, this.DIM_X, this.DIM_Y);
-    ctx.fillStyle = this.BG_COLOR;
+    // ctx.clearRect(0, 0, this.DIM_X, this.DIM_Y);
+    // ctx.fillStyle = this.BG_COLOR;
+    // ctx.clearRect(0, 0, 100, 100);
+    ctx.fillStyle = 'rgba(0, 0, 0, 0.1)';
     ctx.fillRect(0, 0, this.DIM_X, this.DIM_Y);
+    // ctx.fillStyle = this.BG_COLOR;
+    // ctx.fillRect(0, 0, 100, 100);
 
     if (!arr) {
       return null;
@@ -86,11 +98,46 @@ class Visualizer {
       let y_end = center_y + Math.sin(radians * i) * (r + bHeight);
 
       this.drawLine(ctx, x, y, x_end, y_end, bWidth, arr, i);
-      
 
-      // ctx.fillRect(this.DIM_X - x, this.DIM_Y - arr[x], 10, ((arr[x] / 128.0) * this.DIM_Y / 4));
 
       this.drawCircle(ctx, arr, i);
+
+      
+    }
+  }
+
+  draw(ctx, arr) {
+    ctx.clearRect(0, 0, this.DIM_X, this.DIM_Y);
+    ctx.fillStyle = this.BG_COLOR;
+    ctx.fillRect(0, 0, this.DIM_X, this.DIM_Y);
+
+    let numBars = this.numBars;
+    for (let i = 0; i < numBars; i++) {
+      this.textObjects[0].draw(ctx, arr, i);
+      this.smallVisualizer.draw(ctx, arr, i, this.DIM_X, this.DIM_Y);
+      // this.allObjects().forEach((object) => {
+      //   object.draw(ctx, arr, i);
+      // });
+    }
+  }
+
+  allObjects() {
+    return [].concat(this.textObjects);
+  }
+
+  add(object) {
+    if (object instanceof VisualizerText) {
+      this.textObjects.push(object);
+    } else {
+      throw new Error("unknown type of object");
+    }
+  }
+
+  remove(object) {
+    if (object instanceof VisualizerText) {
+      this.textObjects.splice(this.textObjects.indexOf(object), 1);
+    } else {
+      throw new Error("unknown type of object");
     }
   }
 
