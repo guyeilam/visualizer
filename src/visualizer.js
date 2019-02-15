@@ -21,8 +21,6 @@ class Visualizer {
     this.smallVisualizer = new SmallVisualizer(this.DIM_X - 300, 100);
   }
 
-  
-
   drawCircle(ctx, arr, x) {
     let radius = arr[x];
     let startX = this.startX;
@@ -56,8 +54,8 @@ class Visualizer {
     // ctx.clearRect(0, 0, this.DIM_X, this.DIM_Y);
     // ctx.fillStyle = this.BG_COLOR;
     // ctx.clearRect(0, 0, 100, 100);
-    ctx.fillStyle = 'rgba(0, 0, 0, 0.1)';
-    ctx.fillRect(0, 0, this.DIM_X, this.DIM_Y);
+    // ctx.fillStyle = 'rgba(0, 0, 0, 0.9)';
+    // ctx.fillRect(0, 0, this.DIM_X, this.DIM_Y);
     // ctx.fillStyle = this.BG_COLOR;
     // ctx.fillRect(0, 0, 100, 100);
 
@@ -102,22 +100,39 @@ class Visualizer {
 
       this.drawCircle(ctx, arr, i);
 
-      
+  
     }
   }
 
   draw(ctx, arr) {
-    ctx.clearRect(0, 0, this.DIM_X, this.DIM_Y);
-    ctx.fillStyle = this.BG_COLOR;
-    ctx.fillRect(0, 0, this.DIM_X, this.DIM_Y);
+    ctx.clearRect(400, 0, this.DIM_X, this.DIM_Y);
+    ctx.fillStyle = '#000000';
+    ctx.fillRect(400, 0, this.DIM_X, this.DIM_Y);
 
     let numBars = this.numBars;
+    this.drawOld(ctx, arr);
+    this.textObjects[0].draw(ctx, arr);
     for (let i = 0; i < numBars; i++) {
-      this.textObjects[0].draw(ctx, arr, i);
       this.smallVisualizer.draw(ctx, arr, i, this.DIM_X, this.DIM_Y);
       // this.allObjects().forEach((object) => {
       //   object.draw(ctx, arr, i);
       // });
+
+      // let radians = Math.PI * 2 / numBars;
+      // let bHeight = arr[i] * this.bHeightFactor;
+      // let bWidth = this.lineWidth;
+      // let center_x = this.DIM_X / 2;
+      // let center_y = this.DIM_Y / 2;
+
+      // let x = center_x + Math.cos(radians * i) * (r);
+      // let y = center_y + Math.sin(radians * i) * (r);
+      // let x_end = center_x + Math.cos(radians * i) * (r + bHeight);
+      // let y_end = center_y + Math.sin(radians * i) * (r + bHeight);
+
+      // this.drawLine(ctx, x, y, x_end, y_end, bWidth, arr, i);
+
+
+      // this.drawCircle(ctx, arr, i);
     }
   }
 

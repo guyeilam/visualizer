@@ -1,8 +1,8 @@
 class AudioOutput {
   constructor() {
     this.audioContext = new AudioContext();
+    const proxyUrl = 'https://corsproxyglobe.herokuapp.com/';
     this.audioElement = new Audio();
-    this.audioElement.src = 'https://api.soundcloud.com/tracks/42328219/stream?client_id=b1495e39071bd7081a74093816f77ddb';
     this.audioElement.controls = true;
     this.audioElement.loop = true;
     this.audioElement.autoplay = true;
@@ -12,7 +12,9 @@ class AudioOutput {
     this.analyser.fftSize = 2048;
     this.audioSrc.connect(this.analyser);
     this.audioSrc.connect(this.audioContext.destination);
-    // this.frequencyData = new Uint8Array(this.analyser.frequencyBinCount);
+    this.musicSrc = [];
+    this.musicSrc.push('s3.amazonaws.com/full-stack-upload-dev/Avicii+-+Broken+Arrows.mp3');
+    this.audioElement.src = proxyUrl + this.musicSrc[0];
   }
 
   togglePlay(playState) {

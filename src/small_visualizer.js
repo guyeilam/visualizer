@@ -25,6 +25,7 @@ class SmallVisualizer {
     if ((i % 10) === 0) {
       ctx.fillStyle = 'rgb(255, 255, 255)';
       ctx.fillRect(this.pos_x + (i / 5), this.pos_y - (arr[i] / 8), 1, (arr[i] / 8));
+      // ctx.fillRect(this.pos_x + (i / 10), this.pos_y - (arr[i] / 8), 5, (arr[i] / 5));
     }
   }
 }
