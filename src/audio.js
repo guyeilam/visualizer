@@ -14,7 +14,8 @@ class AudioOutput {
     this.audioSrc.connect(this.audioContext.destination);
     this.musicSrc = [];
     this.musicSrc.push('s3.amazonaws.com/full-stack-upload-dev/Avicii+-+Broken+Arrows.mp3');
-    this.audioElement.src = proxyUrl + this.musicSrc[0];
+    this.musicSrc.push('s3.amazonaws.com/full-stack-upload-dev/Avicii+-+Hey+Brother+(Lyric).mp3');
+    this.audioElement.src = proxyUrl + this.musicSrc[1];
   }
 
   togglePlay(playState) {
@@ -32,34 +33,6 @@ class AudioOutput {
     }
     return newPlayState;
   }
-
-  // draw(ctx) {
-    
-
-  // }
-
-  // renderFrame() {
-  //   if (playState === false) {
-  //     cancelAnimationFrame(animationFrame);
-  //   } else {
-  //     animationFrame = requestAnimationFrame(renderFrame);
-  // }
-
-  // renderFrame() {
-  //   const animationFrame = requestAnimationFrame(this.renderFrame);
-  //   this.analyser.getByteFrequencyData(this.frequencyData);
-    // let dataOutput = [];
-    // for (let i = 0; i < frequencyData.length; i++) {
-    //   if ((frequencyData[i] > 0) && (i % 40 === 0)) {
-    //     dataOutput.push(frequencyData[i]);
-    //     redraw(frequencyData[i]);
-    //   }
-    // }
-    // refrequencyData);
-
-    // redraw(frequencyData);
 }
-
-
 
 module.exports = AudioOutput;

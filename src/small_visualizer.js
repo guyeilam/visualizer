@@ -9,7 +9,7 @@ class SmallVisualizer {
     ctx.strokeStyle = 'rgb(255,255,255)';
     ctx.lineWidth = 2;
     let x1 = dim_x - 310;
-    let x2 = dim_x - 120;
+    let x2 = dim_x - 140;
     let y1 = 30;
     let y2 = 110;
     ctx.beginPath();
