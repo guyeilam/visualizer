@@ -15,7 +15,7 @@ class AudioOutput {
     this.musicSrc = [];
     this.musicSrc.push('s3.amazonaws.com/full-stack-upload-dev/Avicii+-+Broken+Arrows.mp3');
     this.musicSrc.push('s3.amazonaws.com/full-stack-upload-dev/Avicii+-+Hey+Brother+(Lyric).mp3');
-    this.audioElement.src = proxyUrl + this.musicSrc[1];
+    this.audioElement.src = proxyUrl + this.musicSrc[0];
   }
 
   togglePlay(playState) {
