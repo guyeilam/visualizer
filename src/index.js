@@ -25,6 +25,10 @@ document.addEventListener("DOMContentLoaded", () => {
     playState = audio.togglePlay(playState);
     renderFrame();
   });
+  const nextButton = document.getElementById('next-song');
+  nextButton.addEventListener('click', () => {
+    audio.nextTrack();
+  });
   canvasEl = document.getElementById("mycanvas");
   canvasEl.width = visualizer.DIM_X;
   canvasEl.height = visualizer.DIM_Y;

@@ -1,7 +1,8 @@
 class AudioOutput {
   constructor() {
     this.audioContext = new AudioContext();
-    const proxyUrl = 'https://corsproxyglobe.herokuapp.com/';
+    this.currentTrack = 0;
+    this.proxyUrl = 'https://corsproxyglobe.herokuapp.com/';
     this.audioElement = new Audio();
     this.audioElement.controls = true;
     this.audioElement.loop = true;
@@ -17,7 +18,7 @@ class AudioOutput {
     this.musicSrc.push('s3.amazonaws.com/full-stack-upload-dev/Avicii+-+Hey+Brother+(Lyric).mp3');
     this.musicSrc.push('s3.amazonaws.com/notefloat-dev/sandstorm.mp3');
     this.musicSrc.push("https://s3.amazonaws.com/full-stack-upload-dev/7.+Jackson+5+-+I+Want+You+Back.mp3");
-    this.audioElement.src = proxyUrl + this.musicSrc[0];
+    this.audioElement.src = this.proxyUrl + this.musicSrc[this.currentTrack];
   }
 
   togglePlay(playState) {
@@ -34,6 +35,13 @@ class AudioOutput {
       newPlayState = false;
     }
     return newPlayState;
+  }
+
+  nextTrack() {
+    // return () => {
+      this.currentTrack = (this.currentTrack + 1) % this.musicSrc.length;
+      this.audioElement.src = this.proxyUrl + this.musicSrc[this.currentTrack];
+    // }
   }
 }
 

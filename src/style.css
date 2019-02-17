@@ -201,3 +201,17 @@ input[type=range]:focus::-ms-fill-lower {
 input[type=range]:focus::-ms-fill-upper {
   background: rgba(95, 126, 186, 0.96);
 }
+
+
+.next-song-button {
+  margin-left: 50px;
+}
+
+#next-song {
+  height: 20px;
+}
+
+#next-song:hover {
+    transition: all .1s ease-in-out; 
+  transform: scale(1.1);
+}
