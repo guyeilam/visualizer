@@ -33,22 +33,28 @@ document.addEventListener("DOMContentLoaded", () => {
   let redRGBSlider = document.getElementById('redRGBSlider');
   let blueRGBSlider = document.getElementById('blueRGBSlider');
   let greenRGBSlider = document.getElementById('greenRGBSlider');
+  let circleAlphaSlider = document.getElementById('circleAlphaSlider');
   let blueSlider = document.getElementById('blueSlider');
   let widthSlider = document.getElementById('widthSlider');
   let heightSlider = document.getElementById('heightSlider');
   let barCountInput = document.getElementById('barCountInput');
   let fadeInput = document.getElementById('fadeSlider');
+  let circleRadiusSlider = document.getElementById('circleRadiusSlider');
 
   redRGBSlider.addEventListener('input', function () {
-    visualizer.changeColor(`rgb(${this.value}, ${greenRGBSlider.value}, ${blueRGBSlider.value})`);
+    visualizer.changeCircleRed(this.value);
   }, false);
 
   greenRGBSlider.addEventListener('input', function () {
-    visualizer.changeColor(`rgb(${redRGBSlider.value}, ${this.value}, ${blueRGBSlider.value})`);
+    visualizer.changeCircleGreen(this.value);
   }, false);
 
   blueRGBSlider.addEventListener('input', function () {
-    visualizer.changeColor(`rgb(${redRGBSlider.value}, ${greenRGBSlider.value}, ${this.value})`);
+    visualizer.changeCircleBlue(this.value);
+  }, false);
+
+  circleAlphaSlider.addEventListener('input', function () {
+    visualizer.changeCircleAlpha(this.value);
   }, false);
 
   blueSlider.addEventListener('input', function () {
@@ -69,6 +75,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
  fadeInput.addEventListener('input', function () {
     visualizer.changeFade(this.value);
+    visualizer.drawText(ctx, this.value);
+  }, false);
+
+  circleRadiusSlider.addEventListener('input', function () {
+    visualizer.changeCircleRadius(this.value);
   }, false);
 
 });

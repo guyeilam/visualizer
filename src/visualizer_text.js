@@ -12,20 +12,20 @@ class VisualizerText {
     }
   }
 
-  draw(ctx, arr) {
-    if (this.lineCount === 0) {
-      ctx.fillStyle = '#000000';
-      ctx.fillRect(0, 0, 400, 5000);
-    }
+  draw(ctx, text) {
+    // if (this.lineCount === 0) {
+    //   ctx.fillStyle = '#000000';
+    //   ctx.fillRect(0, 0, 400, 5000);
+    // }
     this.newLine();
     if (this.lineCount === 1) {
       // ctx.clearRect(0, 0, 400, 5000);
-      ctx.fillStyle = '#000000';
-      ctx.fillRect(0, 0, 400,5000);
+      // ctx.fillStyle = '#000000';
+      // ctx.fillRect(0, 0, 400,5000);
     }
     ctx.font = '10px sans-serif';
-    ctx.strokeStyle = 'rgba(255, 0, 0, 0.5)';
-    ctx.strokeText(arr.slice(0,200).toString(), this.pos_x, this.pos_y + (12 * this.lineCount));
+    ctx.strokeStyle = 'rgba(255, 0, 0, 1)';
+    ctx.strokeText(text, this.pos_x, this.pos_y + (12 * this.lineCount));
   }
 }
 

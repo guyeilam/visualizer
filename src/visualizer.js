@@ -6,7 +6,11 @@ class Visualizer {
     this.DIM_X = width;
     this.DIM_Y = height;
     this.BG_COLOR = "#000000";
-    this.color = 'rgb(100,100,100)';
+    this.circleRed = 100;
+    this.circleGreen = 100;
+    this.circleBlue = 100;
+    this.circleAlpha = 1;
+    // this.color = 'rgb(100,100,100)';
     this.blue = 100;
     this.widthValue = 1;
     this.lineWidth = 1;
@@ -14,21 +18,22 @@ class Visualizer {
     this.startX = 1;
     this.bHeightFactor = 1;
     this.fadeFactor = 1;
+    this.radiusFactor = 1;
     this.r = 150;
     this.numBars = 1024;
     this.time = new Date()
     this.textObjects = [];
-    this.add(new VisualizerText(50, 50));
+    this.add(new VisualizerText(50, 500));
     this.smallVisualizer = new SmallVisualizer(this.DIM_X - 300, 100);
   }
 
   drawCircle(ctx, arr, x) {
-    let radius = arr[x];
+    let radius = arr[x] * this.radiusFactor;
     let startX = this.startX;
     let transposeX = .5;
     let startY = 12.5;
     let transposeY = .5;
-    ctx.strokeStyle = this.color;
+    ctx.strokeStyle = `rgba(${this.circleRed}, ${this.circleGreen}, ${this.circleBlue}, ${this.circleAlpha})`;
     ctx.lineWidth = this.widthValue;
     ctx.beginPath();
     // ctx.arc(startX + (transposeX * arr[x]), startY + (transposeY * arr[x]), radius, 0, Math.PI * 2, true);
@@ -50,14 +55,22 @@ class Visualizer {
     ctx.stroke();
   }
 
+  drawText(ctx, text) {
+    this.textObjects[0].draw(ctx, text);
+  }
+
   draw(ctx, arr) {
     let center_x = this.DIM_X / 2;
     let center_y = this.DIM_Y / 2;
     let r = this.r;
 
-    // ctx.clearRect(0, 0, this.DIM_X, this.DIM_Y);
+    // ctx.clearRect(0, this.DIM_Y - 200, 100, 200);
+    // ctx.fillStyle = 'rgba(0,0,0,1)';
+    // ctx.fillRect(0, this.DIM_Y - 200, 100, 200);
     ctx.fillStyle = `rgba(0,0,0,${this.fadeFactor})`;
     ctx.fillRect(0, 0, this.DIM_X, this.DIM_Y);
+    // ctx.fillRect(0, 0, this.DIM_X, this.DIM_Y - 200);
+    // ctx.fillRect(100, this.DIM_Y - 200, this.DIM_X - 100, 200);
 
     ctx.strokeStyle = this.color;
     ctx.beginPath();
@@ -111,7 +124,29 @@ class Visualizer {
     this.color = newColor;
   }
 
+  changeCircleRed(newRed) {
+    this.circleRed = newRed;
+  }
+
+  changeCircleGreen(newGreen) {
+    this.circleGreen = newGreen;
+  }
+
+  changeCircleBlue(newBlue) {
+    this.circleBlue = newBlue;
+  }
+
+  changeCircleAlpha(newAlpha) {
+    this.circleAlpha = newAlpha;
+  }
+
   changeBlue(newBlue) {
+    // let oldBlue = this.blue;
+    // let diff = newBlue - oldBlue;
+    // let step = diff / 10;
+    // for (let i = 0; i < 10; i++) {
+    //   setTimeout(() => { this.blue = oldBlue + (step * i) }, 1000 * i)
+    // }
     this.blue = newBlue;
   }
 
@@ -133,6 +168,10 @@ class Visualizer {
 
   changeFade(newFade) {
     this.fadeFactor = newFade;
+  }
+
+  changeCircleRadius(newRadiusFactor) {
+    this.radiusFactor = newRadiusFactor;
   }
 
 }
