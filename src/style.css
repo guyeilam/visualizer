@@ -64,11 +64,19 @@ input {
 .main {
   margin: 20px;
 }
-.modifier-inputs {
+
+.floating-container {
   display: flex;
+  flex-direction: column;
   background: rgba(0,0,0,0.1);
   position: absolute;
   left: 25%;
+}
+.modifier-inputs {
+  display: flex;
+  /* background: rgba(0,0,0,0.1);
+  position: absolute;
+  left: 25%; */
   /* flex-direction: column; */
   /* width: 1000px; */
 }
