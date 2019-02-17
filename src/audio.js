@@ -15,6 +15,8 @@ class AudioOutput {
     this.musicSrc = [];
     this.musicSrc.push('s3.amazonaws.com/full-stack-upload-dev/Avicii+-+Broken+Arrows.mp3');
     this.musicSrc.push('s3.amazonaws.com/full-stack-upload-dev/Avicii+-+Hey+Brother+(Lyric).mp3');
+    this.musicSrc.push('s3.amazonaws.com/notefloat-dev/sandstorm.mp3');
+    this.musicSrc.push("https://s3.amazonaws.com/full-stack-upload-dev/7.+Jackson+5+-+I+Want+You+Back.mp3");
     this.audioElement.src = proxyUrl + this.musicSrc[0];
   }
 

@@ -6,9 +6,9 @@ class Visualizer {
     this.DIM_X = width;
     this.DIM_Y = height;
     this.BG_COLOR = "#000000";
-    this.circleRed = 100;
-    this.circleGreen = 100;
-    this.circleBlue = 100;
+    this.circleRed = 20;
+    this.circleGreen = 20;
+    this.circleBlue = 150;
     this.circleAlpha = 1;
     // this.color = 'rgb(100,100,100)';
     this.blue = 100;
@@ -20,6 +20,7 @@ class Visualizer {
     this.fadeFactor = 1;
     this.radiusFactor = 1;
     this.r = 150;
+    this.radiusFactorBars = 1;
     this.numBars = 1024;
     this.time = new Date()
     this.textObjects = [];
@@ -64,7 +65,7 @@ class Visualizer {
 
     let center_x = this.DIM_X / 2;
     let center_y = this.DIM_Y / 2;
-    let r = this.r;
+    let r = this.r * this.radiusFactorBars;
 
     // ctx.clearRect(0, this.DIM_Y - 200, 100, 200);
     // ctx.fillStyle = 'rgba(0,0,0,1)';
@@ -76,7 +77,7 @@ class Visualizer {
 
     ctx.strokeStyle = this.color;
     ctx.beginPath();
-    ctx.arc(center_x, center_y, 150, 0, 2 * Math.PI);
+    ctx.arc(center_x, center_y, r, 0, 2 * Math.PI);
     ctx.stroke();
 
     let numBars = this.numBars;
@@ -177,6 +178,10 @@ class Visualizer {
 
   changeCircleRadius(newRadiusFactor) {
     this.radiusFactor = newRadiusFactor;
+  }
+
+  changeRadiusBars(newRadiusFactor) {
+    this.radiusFactorBars = newRadiusFactor;
   }
 
 }

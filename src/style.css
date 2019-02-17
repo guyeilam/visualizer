@@ -101,18 +101,19 @@ input {
   height: 25px;
   font-size: 14px;
   text-transform: uppercase;
-  border: 2px solid white;
+  border: .5px solid white;
   border-radius: 5px;
   text-align: center;
   margin: 10px;
   width: 500px;
+  height: 30px;
   /* margin: auto; */
 }
 
 .play-button:hover {
-  background-color: rgba(60, 115, 146, 0.4);
+  background-color: rgba(60, 115, 146, 0.2);
   transition: all .1s ease-in-out; 
-  transform: scale(1.05);
+  transform: scale(1.1);
 }
 
 input[type=range] {

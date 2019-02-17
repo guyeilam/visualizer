@@ -40,6 +40,7 @@ document.addEventListener("DOMContentLoaded", () => {
   let barCountInput = document.getElementById('barCountInput');
   let fadeInput = document.getElementById('fadeSlider');
   let circleRadiusSlider = document.getElementById('circleRadiusSlider');
+  let barsRadiusSlider = document.getElementById('barsRadiusSlider');
 
   redRGBSlider.addEventListener('input', function () {
     visualizer.changeCircleRed(this.value);
@@ -80,6 +81,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
   circleRadiusSlider.addEventListener('input', function () {
     visualizer.changeCircleRadius(this.value);
+  }, false);
+
+  barsRadiusSlider.addEventListener('input', function () {
+    visualizer.changeRadiusBars(this.value);
   }, false);
 
 });
