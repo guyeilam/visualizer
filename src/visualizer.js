@@ -43,8 +43,8 @@ class Visualizer {
   }
 
   drawLine(ctx, x1, y1, x2, y2, width, arr, i) {
-    let red = Math.floor(255 * (i / arr.length));
-    let green = 255 - this.blue;
+    let green = Math.floor(255 * (i / arr.length));
+    let red = 255 - this.blue;
     ctx.strokeStyle = `rgba(${red}, ${green}, ${this.blue}, 1)`;
     // ctx.strokeStyle = 'rgb(0, ' + Math.floor(255 - i) + ', ' + this.blue + ')';
     ctx.lineWidth = this.lineWidth;
