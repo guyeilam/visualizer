@@ -23,7 +23,7 @@ class Visualizer {
     this.numBars = 1024;
     this.time = new Date()
     this.textObjects = [];
-    this.add(new VisualizerText(50, 500));
+    this.add(new VisualizerText(50, this.DIM_Y - 400));
     this.smallVisualizer = new SmallVisualizer(this.DIM_X - 300, 100);
   }
 
@@ -55,11 +55,13 @@ class Visualizer {
     ctx.stroke();
   }
 
-  drawText(ctx, text) {
-    this.textObjects[0].draw(ctx, text);
+  drawText(ctx, text, rowHeight) {
+    this.textObjects[0].draw(ctx, text, rowHeight);
   }
 
   draw(ctx, arr) {
+    let time = new Date();
+
     let center_x = this.DIM_X / 2;
     let center_y = this.DIM_Y / 2;
     let r = this.r;
@@ -78,13 +80,16 @@ class Visualizer {
     ctx.stroke();
 
     let numBars = this.numBars;
+    // let numBars = this.numBars + Math.floor(((time.getMilliseconds() / 1000) * (1024 - this.numBars)));
     // this.drawOld(ctx, arr);
     // this.textObjects[0].draw(ctx, arr);
     for (let i = 0; i < arr.length; i++) {
+      // let numBars = Math.floor((100-(time.getMilliseconds() / 100)) * 1024);
+      // this.drawText(ctx, numBars, 1);
       this.smallVisualizer.draw(ctx, arr, i, this.DIM_X, this.DIM_Y);
 
       if (i <= numBars) {
-        let radians = Math.PI * 2 / numBars;
+        let radians = Math.PI * (2 / numBars);
         let bHeight = arr[i] * this.bHeightFactor;
         let bWidth = this.lineWidth;
 

@@ -1,11 +1,85 @@
+html, body, header, nav, h1, a,
+ul, li, strong, main, button, i,
+section, img, div, h2, p, form,
+fieldset, label, input, textarea,
+span, article, footer, time, small {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  font: inherit;
+  color: inherit;
+  text-align: inherit;
+  text-decoration: inherit;
+  vertical-align: inherit;
+  box-sizing: inherit;
+  background: transparent;
+  text-rendering: optimizeLegibility;
+}
+
+ul {
+  list-style: none;
+}
+
+img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+input[type="password"],
+input[type="email"],
+input[type="text"],
+input[type="submit"],
+textarea,
+button {
+  /*
+  Get rid of native styling. Read more here:
+  http://css-tricks.com/almanac/properties/a/appearance/
+  */
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+
+button,
+input[type="submit"] {
+  cursor: pointer;
+}
+
 canvas {
   border: 1px solid black;
 }
 
+body {
+  background-color: black;
+  color: white;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+input {
+  background: black;
+  /* width: 100%; */
+}
+
+.main {
+  margin: 20px;
+}
 .modifier-inputs {
   display: flex;
+  /* flex-direction: column; */
+  /* width: 1000px; */
+}
+
+.modifier-inputs-div {
+  display: flex;
   flex-direction: column;
-  width: 1000px;
+  flex-basis: 50%;
+  padding: 10px;
+}
+
+.play-button-container {
+  display: flex;
+  justify-content: center;
 }
 
 .play-button {
@@ -16,7 +90,18 @@ canvas {
   height: 25px;
   font-size: 14px;
   text-transform: uppercase;
-  margin: auto;
+  border: 2px solid white;
+  border-radius: 5px;
+  text-align: center;
+  margin: 10px;
+  width: 500px;
+  /* margin: auto; */
+}
+
+.play-button:hover {
+  background-color: rgba(60, 115, 146, 0.4);
+  transition: all .1s ease-in-out; 
+  transform: scale(1.05);
 }
 
 input[type=range] {
