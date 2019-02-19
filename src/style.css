@@ -222,17 +222,24 @@ input[type=range]:focus::-ms-fill-upper {
   width: 100px;
   height: 100px;
   left: 5%;
-  top: 50%;
+  top: 40%;
   background: rgba(0,0,0,0);
   display: flex;
   flex-direction: column;
 }
 
-.github-link svg {
-  fill: white;
+.linkedin-link {
+  align-self: center;
+  margin-top: 20px;
 }
 
-.github-link:hover {
+.github-link svg, .linkedin-link svg {
+  fill: white;
+  align-self: center;
+}
+
+.github-link:hover, .linkedin-link:hover {
   transition: all .1s ease-in-out; 
   transform: scale(1.1);
 }
+
