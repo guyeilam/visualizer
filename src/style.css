@@ -70,7 +70,7 @@ input {
   flex-direction: column;
   background: rgba(0,0,0,0.1);
   position: absolute;
-  left: 25%;
+  left: 15%;
 }
 .modifier-inputs {
   display: flex;
@@ -84,7 +84,7 @@ input {
 .modifier-inputs-div {
   display: flex;
   flex-direction: column;
-  flex-basis: 50%;
+  flex-basis: 60%;
   padding: 10px;
 }
 
@@ -203,19 +203,15 @@ input[type=range]:focus::-ms-fill-upper {
 }
 
 
-.next-song-button {
+/* .next-song-button {
   margin-left: 50px;
-}
+} */
 
-#next-song {
+/* #next-song {
   height: 20px;
-}
+} */
 
-#next-song:hover {
-  transition: all .1s ease-in-out; 
-  transform: scale(1.1);
-  color: rgba(39, 153, 219, 0.582);
-}
+
 
 .link-icons {
   position: absolute;
@@ -243,3 +239,49 @@ input[type=range]:focus::-ms-fill-upper {
   transform: scale(1.1);
 }
 
+.preset-button {
+  border: 1px solid gray;
+  border-radius: 5px;
+  width: 140px;
+  height: 20px;
+  font-size: 12px;
+  text-align: center;
+}
+
+.preset-button:hover {
+  transition: all .1s ease-in-out; 
+  transform: scale(1.1);
+  background-color: rgba(39, 153, 219, 0.582);
+  cursor: pointer;
+}
+
+.new-buttons-section {
+  position: fixed;
+  display: flex;
+  justify-content: space-evenly;
+  top: 25%;
+  width: 100%;
+}
+
+.save-settings, .next-song-button {
+  background:rgba(255,255,255,.05);
+  border: 1px solid rgb(47, 152, 223);
+  border-radius: 10px;
+  height: 60px;
+  width: 120px;
+  text-align: center;
+  margin-top: 10px;
+  margin-left: 20px;
+}
+
+.save-settings:hover, .next-song-button:hover {
+  transition: all .1s ease-in-out; 
+  transform: scale(1.1);
+  color: rgba(39, 153, 219, 0.582);
+}
+
+.settings-buttons {
+  display: flex;
+  flex-direction: column;
+
+}

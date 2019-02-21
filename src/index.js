@@ -45,6 +45,7 @@ document.addEventListener("DOMContentLoaded", () => {
   let fadeInput = document.getElementById('fadeSlider');
   let circleRadiusSlider = document.getElementById('circleRadiusSlider');
   let barsRadiusSlider = document.getElementById('barsRadiusSlider');
+  let saveSettingsButton = document.getElementById('save-settings-button');
 
   redRGBSlider.addEventListener('input', function () {
     visualizer.changeCircleRed(this.value);
@@ -91,4 +92,15 @@ document.addEventListener("DOMContentLoaded", () => {
     visualizer.changeRadiusBars(this.value);
   }, false);
 
+  saveSettingsButton.addEventListener('click', function () {
+    let preset = visualizer.saveSettings();
+    let div = document.createElement('div');
+    div.className = 'new-button';
+    div.innerHTML = `<input class='preset-button' type='button' id='loadSettings${preset}' value='load settings ${preset}'>`;
+    document.getElementById('new-buttons-div').appendChild(div);
+    let newButton = document.getElementById(`loadSettings${preset}`);
+    newButton.addEventListener('click', function () {
+      visualizer.loadSettings(preset);
+    }, false);
+  }, false);
 });

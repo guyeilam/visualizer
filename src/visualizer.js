@@ -26,6 +26,7 @@ class Visualizer {
     this.textObjects = [];
     this.add(new VisualizerText(50, this.DIM_Y - 400));
     this.smallVisualizer = new SmallVisualizer(this.DIM_X - 300, 100);
+    this.settings = [];
   }
 
   drawCircle(ctx, arr, x) {
@@ -90,7 +91,7 @@ class Visualizer {
       this.smallVisualizer.draw(ctx, arr, i, this.DIM_X, this.DIM_Y);
 
       if (i <= numBars) {
-        let radians = Math.PI * (2 / numBars);
+        let radians = Math.PI * (5.8 / numBars);
         let bHeight = arr[i] * this.bHeightFactor;
         let bWidth = this.lineWidth;
 
@@ -182,6 +183,50 @@ class Visualizer {
 
   changeRadiusBars(newRadiusFactor) {
     this.radiusFactorBars = newRadiusFactor;
+  }
+
+
+  saveSettings() {
+    let settings = {
+      bHeightFactor: this.bHeightFactor,
+      fadeFactor: this.fadeFactor,
+      radiusFactor: this.radiusFactor,
+      r: this.r,
+      radiusFactorBars: this.radiusFactorBars,
+      numBars: this.numBars,
+      circleRed: this.circleRed,
+      circleGreen: this.circleGreen,
+      circleBlue: this.circleBlue,
+      circleAlpha: this.circleAlpha,
+      blue: this.blue,
+      widthValue: this.widthValue,
+      lineWidth: this.lineWidth,
+      blue: this.blue,
+      widthValue: this.widthValue,
+      lineWidth: this.lineWidth
+    };
+    this.settings.push(settings);
+    return this.settings.length;
+  }
+
+  loadSettings(preset) {
+    let settingsPreset = preset-1;
+    this.bHeightFactor = this.settings[settingsPreset]['bHeightFactor'];
+    this.fadeFactor = this.settings[settingsPreset]['fadeFactor'];
+    this.radiusFactor = this.settings[settingsPreset]['radiusFactor'];
+    this.r = this.settings[settingsPreset]['r'];
+    this.radiusFactorBars = this.settings[settingsPreset]['radiusFactorBars'];
+    this.numBars = this.settings[settingsPreset]['numBars'];
+    this.circleRed = this.settings[settingsPreset]['circleRed'];
+    this.circleGreen = this.settings[settingsPreset]['circleGreen'];
+    this.circleBlue = this.settings[settingsPreset]['circleBlue'];
+    this.circleAlpha = this.settings[settingsPreset]['circleAlpha'];
+    this.blue = this.settings[settingsPreset]['blue'];
+    this.widthValue = this.settings[settingsPreset]['widthValue'];
+    this.lineWidth = this.settings[settingsPreset]['lineWidth'];
+    this.blue = this.settings[settingsPreset]['blue'];
+    this.widthValue = this.settings[settingsPreset]['widthValue'];
+    this.lineWidt = this.settings[settingsPreset]['lineWidth'];
   }
 
 }

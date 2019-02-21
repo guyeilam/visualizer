@@ -19,7 +19,7 @@
         <button class='play-button' data-playing="false" role="switch" aria-checked="false">
           <span>play/pause</span>
         </button>
-        <button id='next-song' class='next-song-button' data-playing="false" role="switch" aria-checked="false"><span>next song -></span></button>
+        
       </div>
       <div class='modifier-inputs'>
           <div class='modifier-inputs-div'>
@@ -41,7 +41,15 @@
             <div class='fade-input'>FADE:<input type="range" id="fadeSlider" min="0" max="1" value="1" step="0.01"></div>
             <div class='bars-radius-slider-input'>RADIUS 2:<input type="range" id="barsRadiusSlider" min="0.01" max="2" value="1" step="0.01"></div>
           </div>
+          <div class='settings-buttons'>
+            <button class='save-settings' id='save-settings-button' type='text'><span>save preset</span></button>
+            <button id='next-song' class='next-song-button' data-playing="false" role="switch" aria-checked="false"><span>next song</span></button>
+          </div>
         </div>
+                  
+      </div>
+      <div id='new-buttons-div' class='new-buttons-section'>
+      
       </div>
 
 
