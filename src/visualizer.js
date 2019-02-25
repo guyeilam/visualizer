@@ -1,5 +1,6 @@
-const VisualizerText = require("./visualizer_text");
-const SmallVisualizer = require("./small_visualizer");
+import VisualizerText from './visualizer_text';
+// const SmallVisualizer = require("./small_visualizer");
+import SmallVisualizer from './small_visualizer';
 
 class Visualizer {
   constructor(width, height) {
@@ -231,4 +232,4 @@ class Visualizer {
 
 }
 
-module.exports = Visualizer;
+export default Visualizer;

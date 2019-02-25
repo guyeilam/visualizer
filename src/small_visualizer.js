@@ -30,4 +30,4 @@ class SmallVisualizer {
   }
 }
 
-module.exports = SmallVisualizer;
+export default SmallVisualizer;

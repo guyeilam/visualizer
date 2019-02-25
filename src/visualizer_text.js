@@ -29,4 +29,4 @@ class VisualizerText {
   }
 }
 
-module.exports = VisualizerText;
+export default VisualizerText;

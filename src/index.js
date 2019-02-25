@@ -1,7 +1,7 @@
-const AudioOutput = require("./audio");
-const Visualizer = require("./visualizer");
+import AudioOutput from './audio';
+import Visualizer from './visualizer';
 
-renderFrame = () => {
+function renderFrame() {
   if (playState === false) {
     cancelAnimationFrame(animationFrame);
   } else {
