@@ -229,12 +229,24 @@ input[type=range]:focus::-ms-fill-upper {
   margin-top: 20px;
 }
 
+.angellist-link {
+  align-self: center;
+  margin-top: 20px;
+}
+
 .github-link svg, .linkedin-link svg {
   fill: white;
   align-self: center;
 }
 
-.github-link:hover, .linkedin-link:hover {
+.svg-inline--fa.fa-angellist.fa-w-14 {
+  height: 90px;
+  width: 90px;
+  fill: white;
+  align-self: center;
+}
+
+.github-link:hover, .linkedin-link:hover, .angellist-link:hover {
   transition: all .1s ease-in-out; 
   transform: scale(1.1);
 }
