@@ -3,10 +3,7 @@
 ## Background
 An audio visualizer built using JavaScript and Canvas.
 
-## Functionality & Controls
-
 ## Architecture and Technologies
-
 * HTML5/CSS3
 * HTML 5 Canvas
 * JavaScript
