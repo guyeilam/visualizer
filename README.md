@@ -6,7 +6,7 @@ An audio visualizer built using JavaScript and HTML5 Canvas.
 
 ## Architecture and Technologies
 * HTML5/CSS3
-* HTML 5 Canvas
+* HTML5 Canvas
 * JavaScript
 
 ### Web audio API
