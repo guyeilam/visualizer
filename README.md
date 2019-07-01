@@ -1,7 +1,8 @@
 # JavaScript Audio Visualizer
+[Visualizer Live](https://guyeilam.com/visualizer/)
 
 ## Background
-An audio visualizer built using JavaScript and Canvas.
+An audio visualizer built using JavaScript and HTML5 Canvas.
 
 ## Architecture and Technologies
 * HTML5/CSS3
