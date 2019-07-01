@@ -5,13 +5,12 @@ class SmallVisualizer {
   }
 
   draw(ctx, arr, i, dim_x, dim_y) {
-    
     ctx.strokeStyle = 'rgb(255,255,255)';
     ctx.lineWidth = 2;
     let x1 = dim_x - 310;
     let x2 = dim_x - 140;
-    let y1 = 30;
-    let y2 = 110;
+    let y1 = dim_y - 180;
+    let y2 = dim_y - 100;
     ctx.beginPath();
     ctx.moveTo(x1, y1);
     ctx.lineTo(x2, y1);
@@ -25,7 +24,6 @@ class SmallVisualizer {
     if ((i % 10) === 0) {
       ctx.fillStyle = 'rgb(255, 255, 255)';
       ctx.fillRect(this.pos_x + (i / 5), this.pos_y - (arr[i] / 8), 1, (arr[i] / 8));
-      // ctx.fillRect(this.pos_x + (i / 10), this.pos_y - (arr[i] / 8), 5, (arr[i] / 5));
     }
   }
 }

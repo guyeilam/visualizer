@@ -30,7 +30,6 @@ class AudioOutput {
     if (playState === false) {
       this.audioElement.play();
       newPlayState = true;
-      // this.renderFrame();
     } else if (playState === true) {
       this.audioElement.pause();
       newPlayState = false;

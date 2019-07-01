@@ -17,5 +17,11 @@
   "bugs": {
     "url": "https://github.com/guyeilam/visualizer/issues"
   },
-  "homepage": "https://github.com/guyeilam/visualizer#readme"
+  "homepage": "https://github.com/guyeilam/visualizer#readme",
+  "dependencies": {
+    "webpack": "^4.35.2"
+  },
+  "devDependencies": {
+    "webpack-cli": "^3.3.5"
+  }
 }

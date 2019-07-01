@@ -1,5 +1,4 @@
 import VisualizerText from './visualizer_text';
-// const SmallVisualizer = require("./small_visualizer");
 import SmallVisualizer from './small_visualizer';
 
 class Visualizer {
@@ -11,7 +10,6 @@ class Visualizer {
     this.circleGreen = 20;
     this.circleBlue = 150;
     this.circleAlpha = 1;
-    // this.color = 'rgb(100,100,100)';
     this.blue = 100;
     this.widthValue = 1;
     this.lineWidth = 1;
@@ -26,7 +24,7 @@ class Visualizer {
     this.time = new Date()
     this.textObjects = [];
     this.add(new VisualizerText(50, this.DIM_Y - 400));
-    this.smallVisualizer = new SmallVisualizer(this.DIM_X - 300, 100);
+    this.smallVisualizer = new SmallVisualizer(this.DIM_X - 300, this.DIM_Y - 110);
     this.settings = [];
   }
 
