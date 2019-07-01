@@ -79,7 +79,7 @@ document.addEventListener("DOMContentLoaded", () => {
     visualizer.changeBarCount(this.value);
   }, false);
 
- fadeInput.addEventListener('input', function () {
+  fadeInput.addEventListener('input', function () {
     visualizer.changeFade(this.value);
     visualizer.drawText(ctx, this.value);
   }, false);

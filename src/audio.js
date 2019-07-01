@@ -39,10 +39,8 @@ class AudioOutput {
   }
 
   nextTrack() {
-    // return () => {
-      this.currentTrack = (this.currentTrack + 1) % this.musicSrc.length;
-      this.audioElement.src = this.proxyUrl + this.musicSrc[this.currentTrack];
-    // }
+    this.currentTrack = (this.currentTrack + 1) % this.musicSrc.length;
+    this.audioElement.src = this.proxyUrl + this.musicSrc[this.currentTrack];
   }
 }
 
